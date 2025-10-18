@@ -22,5 +22,7 @@ int main(){
     printf("You have bought %d %s/s\n", amount, itemName);
     printf("The total is: $%.2f", price * amount);
 
+    
+
     return 0;
 }
