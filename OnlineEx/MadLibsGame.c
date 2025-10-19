@@ -23,6 +23,7 @@ int main()
     printf("Enter a noun (animal or person): ");
     fgets(noun, sizeof(noun), stdin);
     noun[strlen(noun)-1] = '\0';
+    
     printf("Enter an adjective (description): ");
     scanf(" %s", &adjective2);
 
