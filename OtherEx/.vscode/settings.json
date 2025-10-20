@@ -1,0 +1,9 @@
+{
+    "makefile.launchConfigurations": [
+        {
+            "cwd": "c:\\Users\\venus\\_Dev\\C_Ex\\OtherEx",
+            "binaryPath": "c:\\Users\\venus\\_Dev\\C_Ex\\OtherEx\\name.exe",
+            "binaryArgs": []
+        }
+    ]
+}
