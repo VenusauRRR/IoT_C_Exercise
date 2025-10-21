@@ -25,6 +25,17 @@ int main(){
     //     printf("You do not have to order any milk\n");
     // }
 
-    
+    //if 3
+    float temperature = 0.0f;
+    printf("Enter a temperature: ");
+    scanf("%f", &temperature);
+    if (temperature >= 37.8f && temperature < 39.8f){
+        printf("You have fever\n");
+    } else if (temperature >= 39.8f){
+        printf("You should see a doctore\n");
+    } else {
+        printf("You dont have a feber\n");
+    }
+
     return 0;
 }
