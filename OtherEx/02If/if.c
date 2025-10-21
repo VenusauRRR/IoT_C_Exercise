@@ -49,16 +49,30 @@ int main(){
     //     printf("myndig but not retired\n");
     // }
 
-    //if 5
-    int category = 0;
-    printf("Enter a category: ");
-    scanf("%d", &category);
-    if (category == 2 || category == 3){
-        printf("The ticket costs 20kr\n");
-    } else if (category == 1){
-        printf("The ticket costs 30kr\n");
-    } else {
-        printf("Invalid input");
-    }
+    // //if 5
+    // int category = 0;
+    // printf("Enter a category: ");
+    // scanf("%d", &category);
+    // if (category == 2 || category == 3){
+    //     printf("The ticket costs 20kr\n");
+    // } else if (category == 1){
+    //     printf("The ticket costs 30kr\n");
+    // } else {
+    //     printf("Invalid input");
+    // }
+
+    // //if 6
+    // int year = 0;
+    // printf("Enter the birth year (YYYY): ");
+    // scanf("%d", &year);
+    // if (year >= 1980 && year < 1990){
+    //     printf("You are born in 1980 talet\n");
+    // } else if (year <= 2000 && year >= 1990){
+    //     printf("You are born in 1990 talet\n");
+    // } else {
+    //     printf("You are not born in 1990- or 1980- talet\n");
+    // }
+
+    
     return 0;
 }
