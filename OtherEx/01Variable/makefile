@@ -1,6 +1,6 @@
 CC = gcc
 PROG = main.exe
-SRC = main.c name.c environName.c hotel.c
+SRC = main.c name.c environName.c hotel.c dataTypeBitSize.c courseLength.c
 CFLAGS = -g
 LIBS =
 
