@@ -19,7 +19,7 @@ int main(){
 
     // environName();
 
-    // sayHotel();
+    sayHotel();
 
     // printDataTypeAndBitSize();
 
