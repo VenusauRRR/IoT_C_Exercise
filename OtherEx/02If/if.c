@@ -73,6 +73,16 @@ int main(){
     //     printf("You are not born in 1990- or 1980- talet\n");
     // }
 
-    
+    // //if 7
+    // int country = 0;
+    // printf("Enter your country: ");
+    // scanf("%d", &country);
+    // if (country >=1 && country <=5){
+    //     printf("You live in Scandinavian\n");
+    // } else if (country == 0){
+    //     printf("You do not live in Scandinavian\n");
+    // } else {
+    //     printf("Invalid input\n");
+    // }
     return 0;
 }
