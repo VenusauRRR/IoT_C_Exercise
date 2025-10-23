@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <ctype.h>
 
 int main(){
 
@@ -24,9 +25,10 @@ int main(){
     for (int i = 0; i < questionCount; i++){
         printf("\n%s\n", questions[i]);
         printf("\n%s\n", options[i]);
-        // printf("%c\n", answerKey[i]);
         printf("\nEnter your choice: ");
         scanf(" %c", &guess);
+        
+        guess = toupper(guess);
 
         if (guess == answerKey[i]){
             printf("CORRECT!\n");
