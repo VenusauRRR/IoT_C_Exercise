@@ -1,7 +1,10 @@
 #include <stdio.h>
+#include <math.h>
 
+void printArray(int *array, int size);
 void ex11_swapPositionInArray(int *index1, int *index2);
 int ex12_counterNumber(int *array, int target, int size);
+void ex13_sortArray(int *array, int size);
 
 int main(void){
     // //Exercise 09
@@ -45,17 +48,31 @@ int main(void){
     //     printf("number at index %d: %d\n", i, arr[i]);
     // }
     
-    //Exercise 12
-    //Räkna förekomster Räkna hur många gånger ett visst tal förekommer i arrayen.
+    // //Exercise 12
+    // //Räkna förekomster Räkna hur många gånger ett visst tal förekommer i arrayen.
+    // int arr[10] = {4,9,2,10,3,6,8,2,7,5};
+    // int size = sizeof(arr) / sizeof(arr[0]);
+    // int target;
+    // printf("Enter a number to count (1-10): ");
+    // scanf("%d", &target);
+    // int resultCount = ex12_counterNumber(arr, target, size);
+    // resultCount == 0 ? printf("No such number\n"): printf("number of count for %d: %d\n", target, resultCount);
+
+    //Exercise 13
+    // Sortera (bubblesort) Implementera bubble sort för att sortera en array i stigande ordning.
     int arr[10] = {4,9,2,10,3,6,8,2,7,5};
     int size = sizeof(arr) / sizeof(arr[0]);
-    int target;
-    printf("Enter a number to count (1-10): ");
-    scanf("%d", &target);
-    int resultCount = ex12_counterNumber(arr, target, size);
-    resultCount == 0 ? printf("No such number\n"): printf("number of count for %d: %d\n", target, resultCount);
+    ex13_sortArray(arr, size);
+    printArray(arr, size);
 
+    
     return 0;
+}
+
+void printArray(int *array, int size){
+    for (int i = 0; i < size; i++){
+        printf("%d: %d\n", i, array[i]);
+    }
 }
 
 void ex11_swapPositionInArray(int *index1, int *index2){
@@ -73,5 +90,21 @@ int ex12_counterNumber(int *array, int target, int size){
         }
     }
     return count;
-
 }
+
+void ex13_sortArray(int *array, int size){
+    int temp = array[0];
+    for (int i = 0; i < size -1 ; i++)
+    {
+        for (int j = 0; j < size-1  ; j++)
+        {
+            if (array[j] > array[j+1]){
+                temp = array[j+1];
+                array[j+1] = array[j];
+                array[j] = temp;
+            }
+        }
+    }
+}
+
+
