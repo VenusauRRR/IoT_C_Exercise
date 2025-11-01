@@ -1,0 +1,27 @@
+#include <stdio.h>
+
+void ex18_print3x3Array(int array[3][3]);
+
+int main(void){
+
+    //Exercise 18
+    // Tvådimensionell array– matrisutskrift Skapa en 3×3 matris och skriv ut den
+    //  snyggt formaterad
+    int arr[][3] = {{1,2,3},
+                    {4,5,6},
+                    {7,8,9}};
+    ex18_print3x3Array(arr);
+
+    return 0;
+}
+
+void ex18_print3x3Array(int array[3][3]){
+    for (int i = 0; i < 3; i++)
+    {
+        for (int j = 0; j < 3; j++)
+        {
+            printf("%d", array[i][j]);
+        }
+        printf("\n");
+    }
+}
