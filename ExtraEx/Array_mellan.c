@@ -6,6 +6,7 @@ void ex11_swapPositionInArray(int *index1, int *index2);
 int ex12_counterNumber(int *array, int target, int size);
 void ex13_sortArray(int *array, int size);
 void ex14_takeAwayIndex(int *array, int index, int size);
+void ex15_reverseArray(int *array, int size);
 
 int main(void){
     // //Exercise 09
@@ -66,14 +67,21 @@ int main(void){
     // ex13_sortArray(arr, size);
     // printArray(arr, size);
 
-    //Exercise 14
-    //  Ta bort ett element Låt användaren ange vilket index som ska tas bort. Flytta
-    //  resterande element så att hålet försvinner.
-    int arr[10] = {4,9,2,10,3,6,8,2,7,5};
-    int index;
-    printf("Enter an index to be deleted (0-9): ");
-    scanf("%d", &index);
-    ex14_takeAwayIndex(arr, index, 10);
+    // //Exercise 14
+    // //  Ta bort ett element Låt användaren ange vilket index som ska tas bort. Flytta
+    // //  resterande element så att hålet försvinner.
+    // int arr[10] = {4,9,2,10,3,6,8,2,7,5};
+    // int index;
+    // printf("Enter an index to be deleted (0-9): ");
+    // scanf("%d", &index);
+    // ex14_takeAwayIndex(arr, index, 10);
+    // printArray(arr, 10);
+
+    //Exercise 15
+    //Vänd arrayen (in-place) Skriv kod som vänder ordningen på arrayen utan att
+    //skapa en ny array
+    int arr[10] = {1,2,3,4,5,6,7,8,9,10};
+    ex15_reverseArray(arr, 10);
     printArray(arr, 10);
     
     return 0;
@@ -125,6 +133,17 @@ void ex14_takeAwayIndex(int *array, int index, int size){
             return;
         }
         array[i] = array[i+1];
+    }
+}
+
+void ex15_reverseArray(int *array, int size){
+    //split the array into half
+    //Revserse the first and last indexes at each around, then 2nd and 2nd last and so on
+    for (int i = 0; i < size / 2; i++)
+    {
+        int temp = array[i];
+        array[i] = array[size -1 -i];
+        array[size - 1- i] = temp;
     }
     
 }
