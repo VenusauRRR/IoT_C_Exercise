@@ -8,6 +8,7 @@ void ex13_sortArray(int *array, int size);
 void ex14_takeAwayIndex(int *array, int index, int size);
 void ex15_reverseArray(int *array, int size);
 void ex16_shiftArrayToRight(int *array, int size);
+int ex17_sumEvenIndex(int *array, int size);
 
 int main(void){
     // //Exercise 09
@@ -85,12 +86,18 @@ int main(void){
     // ex15_reverseArray(arr, 10);
     // printArray(arr, 10);
     
-    //Exercise 16
-    // Skiftning av element Skjut alla element ett steg åt höger. Det sista ska flyttas
-    //till första positionen
+    // //Exercise 16
+    // // Skiftning av element Skjut alla element ett steg åt höger. Det sista ska flyttas
+    // //till första positionen
+    // int arr[10] = {1,2,3,4,5,6,7,8,9,10};
+    // ex16_shiftArrayToRight(arr, 10);
+    // printArray(arr, 10);
+
+    //Exercise 17
+    // Summera jämna index Räkna ut summan av alla element som ligger på jämna
+    // indexpositioner.
     int arr[10] = {1,2,3,4,5,6,7,8,9,10};
-    ex16_shiftArrayToRight(arr, 10);
-    printArray(arr, 10);
+    printf("Total: %d\n", ex17_sumEvenIndex(arr, 10));
 
     return 0;
 }
@@ -162,6 +169,17 @@ void ex16_shiftArrayToRight(int *array, int size){
         array[i] = array[i-1];
     }
     array[0] = temp;
+}
+
+int ex17_sumEvenIndex(int *array, int size){
+    int total = 0;
+    for (int i = 0; i < size; i++)
+    {
+        if (i % 2 == 0){
+            total += array[i];
+        }
+    }
+    return total;
 }
 
 
