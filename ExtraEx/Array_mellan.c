@@ -5,6 +5,7 @@ void printArray(int *array, int size);
 void ex11_swapPositionInArray(int *index1, int *index2);
 int ex12_counterNumber(int *array, int target, int size);
 void ex13_sortArray(int *array, int size);
+void ex14_takeAwayIndex(int *array, int index, int size);
 
 int main(void){
     // //Exercise 09
@@ -58,13 +59,22 @@ int main(void){
     // int resultCount = ex12_counterNumber(arr, target, size);
     // resultCount == 0 ? printf("No such number\n"): printf("number of count for %d: %d\n", target, resultCount);
 
-    //Exercise 13
-    // Sortera (bubblesort) Implementera bubble sort för att sortera en array i stigande ordning.
-    int arr[10] = {4,9,2,10,3,6,8,2,7,5};
-    int size = sizeof(arr) / sizeof(arr[0]);
-    ex13_sortArray(arr, size);
-    printArray(arr, size);
+    // //Exercise 13
+    // // Sortera (bubblesort) Implementera bubble sort för att sortera en array i stigande ordning.
+    // int arr[10] = {4,9,2,10,3,6,8,2,7,5};
+    // int size = sizeof(arr) / sizeof(arr[0]);
+    // ex13_sortArray(arr, size);
+    // printArray(arr, size);
 
+    //Exercise 14
+    //  Ta bort ett element Låt användaren ange vilket index som ska tas bort. Flytta
+    //  resterande element så att hålet försvinner.
+    int arr[10] = {4,9,2,10,3,6,8,2,7,5};
+    int index;
+    printf("Enter an index to be deleted (0-9): ");
+    scanf("%d", &index);
+    ex14_takeAwayIndex(arr, index, 10);
+    printArray(arr, 10);
     
     return 0;
 }
@@ -105,6 +115,18 @@ void ex13_sortArray(int *array, int size){
             }
         }
     }
+}
+
+void ex14_takeAwayIndex(int *array, int index, int size){
+    for (int i = index; i < size; i++)
+    {
+        if (i == (size -1)){
+            array[i] = '\0';
+            return;
+        }
+        array[i] = array[i+1];
+    }
+    
 }
 
 
