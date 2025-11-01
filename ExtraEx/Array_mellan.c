@@ -7,6 +7,7 @@ int ex12_counterNumber(int *array, int target, int size);
 void ex13_sortArray(int *array, int size);
 void ex14_takeAwayIndex(int *array, int index, int size);
 void ex15_reverseArray(int *array, int size);
+void ex16_shiftArrayToRight(int *array, int size);
 
 int main(void){
     // //Exercise 09
@@ -77,13 +78,20 @@ int main(void){
     // ex14_takeAwayIndex(arr, index, 10);
     // printArray(arr, 10);
 
-    //Exercise 15
-    //Vänd arrayen (in-place) Skriv kod som vänder ordningen på arrayen utan att
-    //skapa en ny array
-    int arr[10] = {1,2,3,4,5,6,7,8,9,10};
-    ex15_reverseArray(arr, 10);
-    printArray(arr, 10);
+    // //Exercise 15
+    // //Vänd arrayen (in-place) Skriv kod som vänder ordningen på arrayen utan att
+    // //skapa en ny array
+    // int arr[10] = {1,2,3,4,5,6,7,8,9,10};
+    // ex15_reverseArray(arr, 10);
+    // printArray(arr, 10);
     
+    //Exercise 16
+    // Skiftning av element Skjut alla element ett steg åt höger. Det sista ska flyttas
+    //till första positionen
+    int arr[10] = {1,2,3,4,5,6,7,8,9,10};
+    ex16_shiftArrayToRight(arr, 10);
+    printArray(arr, 10);
+
     return 0;
 }
 
@@ -145,7 +153,15 @@ void ex15_reverseArray(int *array, int size){
         array[i] = array[size -1 -i];
         array[size - 1- i] = temp;
     }
-    
+}
+
+void ex16_shiftArrayToRight(int *array, int size){
+    int temp = array[size - 1];
+    for (int i = size - 1; i >= 1; i--)
+    {
+        array[i] = array[i-1];
+    }
+    array[0] = temp;
 }
 
 
