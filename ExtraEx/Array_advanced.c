@@ -12,6 +12,11 @@ int main(void){
                     {7,8,9}};
     ex18_print3x3Array(arr);
 
+    //Exercise 19
+    //Summan av varje rad och kolumn För en 3×3 matris: skriv ut summan av varje
+    //rad och kolumn.
+    ex19_sumRow(arr);
+
     return 0;
 }
 
@@ -25,3 +30,4 @@ void ex18_print3x3Array(int array[3][3]){
         printf("\n");
     }
 }
+
