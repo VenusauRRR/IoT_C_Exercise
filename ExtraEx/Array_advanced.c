@@ -1,6 +1,8 @@
 #include <stdio.h>
 
 void ex18_print3x3Array(int array[3][3]);
+int ex19_sumRow(int arr[][3], int rowIndex);
+int ex19_sumColoumn(int arr[][3], int columnIndex);
 
 int main(void){
 
@@ -15,8 +17,15 @@ int main(void){
     //Exercise 19
     //Summan av varje rad och kolumn För en 3×3 matris: skriv ut summan av varje
     //rad och kolumn.
-    ex19_sumRow(arr);
-
+    for (int i = 0; i < 3; i++)
+    {
+        printf("Subtotal at row %d: %d\n", i, ex19_sumRow(arr,i));
+    }
+    for (int i = 0; i < 3; i++)
+    {
+        printf("Subtotal at column %d: %d\n", i, ex19_sumColoumn(arr,i));
+    }
+    
     return 0;
 }
 
@@ -29,5 +38,23 @@ void ex18_print3x3Array(int array[3][3]){
         }
         printf("\n");
     }
+}
+
+int ex19_sumRow(int arr[][3], int rowIndex){
+    int total = 0;
+    for (int i = 0; i < 3; i++)
+    {  
+        total += arr[rowIndex][i];
+    }
+    return total;
+}
+
+int ex19_sumColoumn(int arr[][3], int columnIndex){
+    int total = 0;
+    for (int i = 0; i < 3; i++)
+    {  
+        total += arr[i][columnIndex];
+    }
+    return total;
 }
 
