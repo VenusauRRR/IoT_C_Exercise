@@ -24,15 +24,35 @@ int main(void)
     // printf("x = %d\n", *p);
 
 
-    //Ex 03
-    //3. NULL-pekare
-    // Sätt int *p = NULL; Gör en säker kontroll innan dereferens och skriv ut ett meddelande om p är NULL.
-    int *p = NULL;
-    if (p == NULL){     //checking if p is pointing to any address or NULL
-        printf("pointer p is null\n");
-    } else {    //if p has an address, do the dereference
-        printf("oops, pointer p is not null, and the address is %p, value is %d\n", p, *p);
-    }
+    // //Ex 03
+    // //3. NULL-pekare
+    // // Sätt int *p = NULL; Gör en säker kontroll innan dereferens och skriv ut ett meddelande om p är NULL.
+    // int *p = NULL;
+    // if (p == NULL){     //checking if p is pointing to any address or NULL
+    //     printf("pointer p is null\n");
+    // } else {    //if p has an address, do the dereference
+    //     printf("oops, pointer p is not null, and the address is %p, value is %d\n", p, *p);
+    // }
+
+    //Ex 04
+//      4. Pekare och const
+//  Deklarera const int *och int * const och visa vad som får/inte får ändras i kod 
+// (kommentera rader som ska ge fel).
+    int x = 5;
+    const int y = 10;
+    int *i = &x;
+    const int *j = &x;
+    x = 6;
+    y = 20;     //y is a const which is unchangable
+    i = &y;     //pointer i is pointing to a const int y such that pointer i will be unassignable
+    *i = 789;
+    printf("x address is %p\n", &x);
+    printf("j value is %p\n", j);
+    j = &y;     //const int * can point to another address but not the value
+    *j = 123;   //*j = anotherValue --> X not allowed!!!
+    printf("j value is %p\n", j);
+    
+
 
 
     return 0;
