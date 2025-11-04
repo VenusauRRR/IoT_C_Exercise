@@ -34,26 +34,38 @@ int main(void)
     //     printf("oops, pointer p is not null, and the address is %p, value is %d\n", p, *p);
     // }
 
-    //Ex 04
-//      4. Pekare och const
-//  Deklarera const int *och int * const och visa vad som får/inte får ändras i kod 
-// (kommentera rader som ska ge fel).
-    int x = 5;
-    const int y = 10;
-    int *i = &x;
-    const int *j = &x;
-    x = 6;
-    y = 20;     //y is a const which is unchangable
-    i = &y;     //pointer i is pointing to a const int y such that pointer i will be unassignable
-    *i = 789;   //int *i value = somethingelse
-    printf("x address is %p\n", &x);
-    printf("j value is %p\n", j);
-    j = &y;     //const int * can point to another address but not the value
-    *j = 123;   //*j = anotherValue --> X not allowed!!!
-    printf("j value is %p\n", j);
+//     //Ex 04
+// //      4. Pekare och const
+// //  Deklarera const int *och int * const och visa vad som får/inte får ändras i kod 
+// // (kommentera rader som ska ge fel).
+//     int x = 5;
+//     const int y = 10;
+//     int *i = &x;
+//     const int *j = &x;
+//     x = 6;
+//     y = 20;     //y is a const which is unchangable
+//     i = &y;     //pointer i is pointing to a const int y such that pointer i will be unassignable
+//     *i = 789;   //int *i value = somethingelse
+//     printf("x address is %p\n", &x);
+//     printf("j value is %p\n", j);
+//     j = &y;     //const int * can point to another address but not the value
+//     *j = 123;   //*j = anotherValue --> X not allowed!!!
+//     printf("j value is %p\n", j);
     
+    //Ex 05
+//      Byt värden med pekare
+//  Skriv funktionen void swap(int *a, int *b) och testa med två tal.
 
 
+    //Ex06
+    //  Storleksskillnad 
+    //  Skriv ut sizeof(int), sizeof(int*) och sizeof(void*) och kom mentera skillnaden.
+    int x = 1;
+    int *y = &x;
+    void *z = &x;
+    printf("sizeof(int) is %d\n", sizeof(x));
+    printf("sizeof(int*) is %d\n", sizeof(y));
+    printf("sizeof(void*) is %d\n", sizeof(z));
 
     return 0;
 }
