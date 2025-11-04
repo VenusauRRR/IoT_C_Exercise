@@ -4,6 +4,12 @@ int ex07_sumArrayWithPointer(int *p);
 void ex09_my_memset(void *dst, int value, size_t n);
 int* ex10_max_ptr(int *begin, size_t n);
 
+typedef struct{
+    int x;
+    int y;
+} Point;
+
+
 int main(void)
 {
     // // Ex 01
@@ -101,11 +107,26 @@ int main(void)
     //     printf("%d: %c\n", i, buf[i]);
     // }
 
-    //Ex 10
-    //  Hitta max med pekare 
-    //  int* max_ptr(int *begin, size_t n) ska returnera pekare till största elementet
-    int a[8] = {1,22,4,3,8,6,2,91};
-    printf("The max number found by pointer: %d\n", *ex10_max_ptr(a, 8));
+    // //Ex 10
+    // //  Hitta max med pekare 
+    // //  int* max_ptr(int *begin, size_t n) ska returnera pekare till största elementet
+    // int a[8] = {1,22,4,3,8,6,2,91};
+    // printf("The max number found by pointer: %d\n", *ex10_max_ptr(a, 8));
+
+    //Ex 11
+    //  Pekare till struct 
+    //  Definiera struct Point { int x, y; };. Allokera array Point pts[3], 
+    //  fyll med data, iterera med struct Point *p och skriv ut med p->x
+    Point pts[3] = {{1,2},
+                    {5,6},
+                    {8,9}};
+    Point *p = pts;
+    for (int i = 0; i < 3; i++)
+    {
+        printf("x-axis at point index %d: %d\n", i, (*(p+i)).x);
+    }
+    
+
 
     return 0;
 }
