@@ -14,15 +14,25 @@ int main(void)
     // *p = 99;
     // printf("dereference *p has assigned to 99 such that x = %d\n", x);
 
-    // Ex 02
-    //      2. Pekare och scanf
-    //  Läs in ett heltal med scanf("%d", &x); via en pekare p och skriv ut resultatet
-    int x;
-    int *p = &x;
-    printf("Enter a number: ");
-    scanf("%d", &x);
-    printf("x = %d\n", *p);
+    // // Ex 02
+    // //      2. Pekare och scanf
+    // //  Läs in ett heltal med scanf("%d", &x); via en pekare p och skriv ut resultatet
+    // int x;
+    // int *p = &x;
+    // printf("Enter a number: ");
+    // scanf("%d", &x);
+    // printf("x = %d\n", *p);
 
+
+    //Ex 03
+    //3. NULL-pekare
+    // Sätt int *p = NULL; Gör en säker kontroll innan dereferens och skriv ut ett meddelande om p är NULL.
+    int *p = NULL;
+    if (p == NULL){     //checking if p is pointing to any address or NULL
+        printf("pointer p is null\n");
+    } else {    //if p has an address, do the dereference
+        printf("oops, pointer p is not null, and the address is %p, value is %d\n", p, *p);
+    }
 
 
     return 0;
