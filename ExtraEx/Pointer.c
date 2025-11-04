@@ -1,6 +1,7 @@
 #include <stdio.h>
 
 int ex07_sumArrayWithPointer(int *p);
+void ex09_my_memset(void *dst, int value, size_t n);
 
 int main(void)
 {
@@ -25,7 +26,6 @@ int main(void)
     // scanf("%d", &x);
     // printf("x = %d\n", *p);
 
-
     // //Ex 03
     // //3. NULL-pekare
     // // Sätt int *p = NULL; Gör en säker kontroll innan dereferens och skriv ut ett meddelande om p är NULL.
@@ -36,70 +36,90 @@ int main(void)
     //     printf("oops, pointer p is not null, and the address is %p, value is %d\n", p, *p);
     // }
 
-//     //Ex 04
-// //      4. Pekare och const
-// //  Deklarera const int *och int * const och visa vad som får/inte får ändras i kod 
-// // (kommentera rader som ska ge fel).
-//     int x = 5;
-//     const int y = 10;
-//     int *i = &x;
-//     const int *j = &x;
-//     x = 6;
-//     y = 20;     //y is a const which is unchangable
-//     i = &y;     //pointer i is pointing to a const int y such that pointer i will be unassignable
-//     *i = 789;   //int *i value = somethingelse
-//     printf("x address is %p\n", &x);
-//     printf("j value is %p\n", j);
-//     j = &y;     //const int * can point to another address but not the value
-//     *j = 123;   //*j = anotherValue --> X not allowed!!!
-//     printf("j value is %p\n", j);
-    
-//     //Ex 05
-// //      Byt värden med pekare
-// //  Skriv funktionen void swap(int *a, int *b) och testa med två tal.
+    //     //Ex 04
+    // //      4. Pekare och const
+    // //  Deklarera const int *och int * const och visa vad som får/inte får ändras i kod
+    // // (kommentera rader som ska ge fel).
+    //     int x = 5;
+    //     const int y = 10;
+    //     int *i = &x;
+    //     const int *j = &x;
+    //     x = 6;
+    //     y = 20;     //y is a const which is unchangable
+    //     i = &y;     //pointer i is pointing to a const int y such that pointer i will be unassignable
+    //     *i = 789;   //int *i value = somethingelse
+    //     printf("x address is %p\n", &x);
+    //     printf("j value is %p\n", j);
+    //     j = &y;     //const int * can point to another address but not the value
+    //     *j = 123;   //*j = anotherValue --> X not allowed!!!
+    //     printf("j value is %p\n", j);
 
+    //     //Ex 05
+    // //      Byt värden med pekare
+    // //  Skriv funktionen void swap(int *a, int *b) och testa med två tal.
 
-//     //Ex06
-//     //  Storleksskillnad 
-//     //  Skriv ut sizeof(int), sizeof(int*) och sizeof(void*) och kom mentera skillnaden.
-//     int x = 1;
-//     int *y = &x;
-//     void *z = &x;
-//     printf("sizeof(int) is %d\n", sizeof(x));
-//     printf("sizeof(int*) is %d\n", sizeof(y));
-//     printf("sizeof(void*) is %d\n", sizeof(z));
+    //     //Ex06
+    //     //  Storleksskillnad
+    //     //  Skriv ut sizeof(int), sizeof(int*) och sizeof(void*) och kom mentera skillnaden.
+    //     int x = 1;
+    //     int *y = &x;
+    //     void *z = &x;
+    //     printf("sizeof(int) is %d\n", sizeof(x));
+    //     printf("sizeof(int*) is %d\n", sizeof(y));
+    //     printf("sizeof(void*) is %d\n", sizeof(z));
 
     // //Ex 07
-    // // 7. Iterera array med pekare 
-    // // Givet int a[5] = {1,2,3,4,5}; skriv en funktion som 
+    // // 7. Iterera array med pekare
+    // // Givet int a[5] = {1,2,3,4,5}; skriv en funktion som
     // // summerar med en pekare int *p som flyttas fram tills slutet.
     // int a[5] = {1,2,3,4,5};
     // int *p = a;
     // printf("total sum: %d\n", ex07_sumArrayWithPointer(p));
 
+    // //Ex 08
+    // // 8. *(p+i) vs p[i] Skriv ut arrayelement med båda noteringarna och visa att de matchar.
+    // int a[5] = {1,2,3,4,5};
+    // int *p = a;
+    // for (int i = 0; i < 5; i++)
+    // {
+    //     printf("*(p+1) at index %d = %d\n", i, *(p+i));
+    //     printf("p[%d] has value =    %d\n", i, p[i]);
+    // }
 
-    //Ex 08
-    // 8. *(p+i) vs p[i] Skriv ut arrayelement med båda noteringarna och visa att de matchar.
-    int a[5] = {1,2,3,4,5};
-    int *p = a;
-    for (int i = 0; i < 5; i++)
+    // Ex 09
+    //  Skriv memset-light
+    //  Implementera void my_memset(void *dst, int value, size_t n) och testa på en char buf[16]
+    char buf[16];
+    for (int i = 0; i < 16; i++)
     {
-        printf("*(p+1) at index %d = %d\n", i, *(p+i));
-        printf("p[%d] has value =    %d\n", i, p[i]);
+        printf("%d: %c\n", i, buf[i]);
     }
-    
-
+    ex09_my_memset(buf, 'A', 16);
+    for (int i = 0; i < 16; i++)
+    {
+        printf("%d: %c\n", i, buf[i]);
+    }
 
     return 0;
 }
 
-int ex07_sumArrayWithPointer(int *p){
+int ex07_sumArrayWithPointer(int *p)
+{
     int total = 0;
     for (int i = 0; i < 5; i++)
     {
         total += *p;
         p++;
     }
-    
     return total;
+}
+
+void ex09_my_memset(void *dst, int value, size_t n)
+{
+    char *p = dst;
+    for (int i = 0; i < n; i++)
+    {
+        *p = (unsigned char)value;
+        p++;
+    }
 }
