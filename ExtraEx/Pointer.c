@@ -69,15 +69,25 @@ int main(void)
 //     printf("sizeof(int*) is %d\n", sizeof(y));
 //     printf("sizeof(void*) is %d\n", sizeof(z));
 
-    //Ex 07
-    // 7. Iterera array med pekare 
-    // Givet int a[5] = {1,2,3,4,5}; skriv en funktion som 
-    // summerar med en pekare int *p som flyttas fram tills slutet.
+    // //Ex 07
+    // // 7. Iterera array med pekare 
+    // // Givet int a[5] = {1,2,3,4,5}; skriv en funktion som 
+    // // summerar med en pekare int *p som flyttas fram tills slutet.
+    // int a[5] = {1,2,3,4,5};
+    // int *p = a;
+    // printf("total sum: %d\n", ex07_sumArrayWithPointer(p));
+
+
+    //Ex 08
+    // 8. *(p+i) vs p[i] Skriv ut arrayelement med båda noteringarna och visa att de matchar.
     int a[5] = {1,2,3,4,5};
     int *p = a;
-    printf("total sum: %d\n", ex07_sumArrayWithPointer(p));
-
-
+    for (int i = 0; i < 5; i++)
+    {
+        printf("*(p+1) at index %d = %d\n", i, *(p+i));
+        printf("p[%d] has value =    %d\n", i, p[i]);
+    }
+    
 
 
     return 0;
