@@ -3,13 +3,13 @@
 
 int ex07_sumArrayWithPointer(int *p);
 void ex09_my_memset(void *dst, int value, size_t n);
-int* ex10_max_ptr(int *begin, size_t n);
+int *ex10_max_ptr(int *begin, size_t n);
 
-typedef struct{
+typedef struct
+{
     int x;
     int y;
 } Point;
-
 
 int main(void)
 {
@@ -109,14 +109,14 @@ int main(void)
     // }
 
     // //Ex 10
-    // //  Hitta max med pekare 
+    // //  Hitta max med pekare
     // //  int* max_ptr(int *begin, size_t n) ska returnera pekare till största elementet
     // int a[8] = {1,22,4,3,8,6,2,91};
     // printf("The max number found by pointer: %d\n", *ex10_max_ptr(a, 8));
 
     // //Ex 11
-    // //  Pekare till struct 
-    // //  Definiera struct Point { int x, y; };. Allokera array Point pts[3], 
+    // //  Pekare till struct
+    // //  Definiera struct Point { int x, y; };. Allokera array Point pts[3],
     // //  fyll med data, iterera med struct Point *p och skriv ut med p->x
     // Point pts[3] = {{1,2},
     //                 {5,6},
@@ -126,29 +126,71 @@ int main(void)
     // {
     //     printf("x-axis at point index %d: %d\n", i, (*(p+i)).x);
     // }
-    
-    //Ex 12
-    //Const-korrekthet över arrayer 
-    //Skriv int sum_const(const int *a, size_t n) och visa att funktionen inte kan ändra elementen
 
+    // Ex 12
+    // Const-korrekthet över arrayer
+    // Skriv int sum_const(const int *a, size_t n) och visa att funktionen inte kan ändra elementen
 
-    //Ex13
-    //  malloc/free grund
-    //   Läs n, allokera int *a = malloc(n*sizeof *a), fyll 0..n-1, skriv ut och free(a)
-    int n;
-    printf("Enter a number: ");
-    scanf("%d", &n);
-    int *a = malloc(n* sizeof(*a));
-    for (int i = 0; i < n; i++)
+    // //Ex13
+    // //  malloc/free grund
+    // //   Läs n, allokera int *a = malloc(n*sizeof *a), fyll 0..n-1, skriv ut och free(a)
+    // int n;
+    // printf("Enter a number: ");
+    // scanf("%d", &n);
+    // int *a = malloc(n* sizeof(*a));
+    // for (int i = 0; i < n; i++)
+    // {
+    //     *(a + i) = i;
+    // }
+    // for (int i = 0; i < n; i++)
+    // {
+    //     printf("index %d: %d\n", i, *(a+i));
+    // }
+    // free(a);
+
+    // Ex 14
+    // realloc för växande buffert
+    //  Läs heltal tills EOF, väx kapaciteten med realloc (dubblera). Skriv ut antal och medelvärde
+    int *p = NULL;
+    int *temp = realloc(p, sizeof(*p) * 5);
+    if (temp == NULL)   //***IMPORTANT*** need to check if realloc is built successfully
     {
-        *(a + i) = i;
+        printf("Building realloc failed\n");
+        // free(p); //free the original pointer if wants to exit the program, otherwise keep it avoiding losing data
+        exit(1);
     }
-    for (int i = 0; i < n; i++)
+    p = temp;
+    int count = 0;
+    int capacity = 5;
+    printf("Enter as many numbers as you want (Ctrl+D to end):\n");
+    while (scanf("%d", &p[count]) == 1)     //check if scanf() is reaching the end, 1 means valid integer is read
     {
-        printf("index %d: %d\n", i, *(a+i));
+        printf("You entered: %d\n", p[count]);
+        count++;
+        if (count == capacity)
+        {
+            capacity *= 2;
+            printf("capacity: %d\n", capacity);
+            temp = realloc(p, sizeof(*p) * capacity);
+            if (temp == NULL)
+            {
+                printf("Building realloc failed\n");
+                // free(p); //free the original pointer if wants to exit the program, otherwise keep it avoiding losing data
+                exit(1);
+            }
+            p = temp;
+        }
     }
-    free(a);
-
+    printf("You have entered Ctrl+D\n");
+    int total = 0;
+    for (int i = 0; i < count; i++)
+    {
+        printf("index %d: %d\n", i, p[i]);
+        total += p[i];
+    }
+    printf("Total: %d\n", total);
+    printf("Average value: %.2f\n", (float)total/count);
+    free(p);
 
     return 0;
 }
@@ -174,13 +216,12 @@ void ex09_my_memset(void *dst, int value, size_t n)
     }
 }
 
-int* ex10_max_ptr(int *begin, size_t n){
+int *ex10_max_ptr(int *begin, size_t n)
+{
     int *max = begin;
     for (int i = 1; i < n; i++)
     {
         max = *(begin + i) > *max ? (begin + i) : max;
-
     }
     return max;
-    
 }
