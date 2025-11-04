@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <stdlib.h>
 
 int ex07_sumArrayWithPointer(int *p);
 void ex09_my_memset(void *dst, int value, size_t n);
@@ -113,19 +114,40 @@ int main(void)
     // int a[8] = {1,22,4,3,8,6,2,91};
     // printf("The max number found by pointer: %d\n", *ex10_max_ptr(a, 8));
 
-    //Ex 11
-    //  Pekare till struct 
-    //  Definiera struct Point { int x, y; };. Allokera array Point pts[3], 
-    //  fyll med data, iterera med struct Point *p och skriv ut med p->x
-    Point pts[3] = {{1,2},
-                    {5,6},
-                    {8,9}};
-    Point *p = pts;
-    for (int i = 0; i < 3; i++)
-    {
-        printf("x-axis at point index %d: %d\n", i, (*(p+i)).x);
-    }
+    // //Ex 11
+    // //  Pekare till struct 
+    // //  Definiera struct Point { int x, y; };. Allokera array Point pts[3], 
+    // //  fyll med data, iterera med struct Point *p och skriv ut med p->x
+    // Point pts[3] = {{1,2},
+    //                 {5,6},
+    //                 {8,9}};
+    // Point *p = pts;
+    // for (int i = 0; i < 3; i++)
+    // {
+    //     printf("x-axis at point index %d: %d\n", i, (*(p+i)).x);
+    // }
     
+    //Ex 12
+    //Const-korrekthet över arrayer 
+    //Skriv int sum_const(const int *a, size_t n) och visa att funktionen inte kan ändra elementen
+
+
+    //Ex13
+    //  malloc/free grund
+    //   Läs n, allokera int *a = malloc(n*sizeof *a), fyll 0..n-1, skriv ut och free(a)
+    int n;
+    printf("Enter a number: ");
+    scanf("%d", &n);
+    int *a = malloc(n* sizeof(*a));
+    for (int i = 0; i < n; i++)
+    {
+        *(a + i) = i;
+    }
+    for (int i = 0; i < n; i++)
+    {
+        printf("index %d: %d\n", i, *(a+i));
+    }
+    free(a);
 
 
     return 0;
