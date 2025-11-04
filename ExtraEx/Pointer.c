@@ -2,6 +2,7 @@
 
 int ex07_sumArrayWithPointer(int *p);
 void ex09_my_memset(void *dst, int value, size_t n);
+int* ex10_max_ptr(int *begin, size_t n);
 
 int main(void)
 {
@@ -86,19 +87,25 @@ int main(void)
     //     printf("p[%d] has value =    %d\n", i, p[i]);
     // }
 
-    // Ex 09
-    //  Skriv memset-light
-    //  Implementera void my_memset(void *dst, int value, size_t n) och testa på en char buf[16]
-    char buf[16];
-    for (int i = 0; i < 16; i++)
-    {
-        printf("%d: %c\n", i, buf[i]);
-    }
-    ex09_my_memset(buf, 'A', 16);
-    for (int i = 0; i < 16; i++)
-    {
-        printf("%d: %c\n", i, buf[i]);
-    }
+    // // Ex 09
+    // //  Skriv memset-light
+    // //  Implementera void my_memset(void *dst, int value, size_t n) och testa på en char buf[16]
+    // char buf[16];
+    // for (int i = 0; i < 16; i++)
+    // {
+    //     printf("%d: %c\n", i, buf[i]);
+    // }
+    // ex09_my_memset(buf, 'A', 16);
+    // for (int i = 0; i < 16; i++)
+    // {
+    //     printf("%d: %c\n", i, buf[i]);
+    // }
+
+    //Ex 10
+    //  Hitta max med pekare 
+    //  int* max_ptr(int *begin, size_t n) ska returnera pekare till största elementet
+    int a[8] = {1,22,4,3,8,6,2,91};
+    printf("The max number found by pointer: %d\n", *ex10_max_ptr(a, 8));
 
     return 0;
 }
@@ -122,4 +129,15 @@ void ex09_my_memset(void *dst, int value, size_t n)
         *p = (unsigned char)value;
         p++;
     }
+}
+
+int* ex10_max_ptr(int *begin, size_t n){
+    int *max = begin;
+    for (int i = 1; i < n; i++)
+    {
+        max = *(begin + i) > *max ? (begin + i) : max;
+
+    }
+    return max;
+    
 }
