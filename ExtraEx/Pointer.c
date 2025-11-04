@@ -1,5 +1,7 @@
 #include <stdio.h>
 
+int ex07_sumArrayWithPointer(int *p);
+
 int main(void)
 {
     // // Ex 01
@@ -52,20 +54,42 @@ int main(void)
 //     *j = 123;   //*j = anotherValue --> X not allowed!!!
 //     printf("j value is %p\n", j);
     
-    //Ex 05
-//      Byt värden med pekare
-//  Skriv funktionen void swap(int *a, int *b) och testa med två tal.
+//     //Ex 05
+// //      Byt värden med pekare
+// //  Skriv funktionen void swap(int *a, int *b) och testa med två tal.
 
 
-    //Ex06
-    //  Storleksskillnad 
-    //  Skriv ut sizeof(int), sizeof(int*) och sizeof(void*) och kom mentera skillnaden.
-    int x = 1;
-    int *y = &x;
-    void *z = &x;
-    printf("sizeof(int) is %d\n", sizeof(x));
-    printf("sizeof(int*) is %d\n", sizeof(y));
-    printf("sizeof(void*) is %d\n", sizeof(z));
+//     //Ex06
+//     //  Storleksskillnad 
+//     //  Skriv ut sizeof(int), sizeof(int*) och sizeof(void*) och kom mentera skillnaden.
+//     int x = 1;
+//     int *y = &x;
+//     void *z = &x;
+//     printf("sizeof(int) is %d\n", sizeof(x));
+//     printf("sizeof(int*) is %d\n", sizeof(y));
+//     printf("sizeof(void*) is %d\n", sizeof(z));
+
+    //Ex 07
+    // 7. Iterera array med pekare 
+    // Givet int a[5] = {1,2,3,4,5}; skriv en funktion som 
+    // summerar med en pekare int *p som flyttas fram tills slutet.
+    int a[5] = {1,2,3,4,5};
+    int *p = a;
+    printf("total sum: %d\n", ex07_sumArrayWithPointer(p));
+
+
+
 
     return 0;
+}
+
+int ex07_sumArrayWithPointer(int *p){
+    int total = 0;
+    for (int i = 0; i < 5; i++)
+    {
+        total += *p;
+        p++;
+    }
+    
+    return total;
 }
