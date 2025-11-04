@@ -45,7 +45,7 @@ int main(void)
     x = 6;
     y = 20;     //y is a const which is unchangable
     i = &y;     //pointer i is pointing to a const int y such that pointer i will be unassignable
-    *i = 789;
+    *i = 789;   //int *i value = somethingelse
     printf("x address is %p\n", &x);
     printf("j value is %p\n", j);
     j = &y;     //const int * can point to another address but not the value
