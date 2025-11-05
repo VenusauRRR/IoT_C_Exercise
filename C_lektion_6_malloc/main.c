@@ -3,6 +3,7 @@
 #include <ctype.h>
 
 void *createMallocArray(void *p, size_t n);
+void *createCallacArray(void *p, size_t n);
 
 int main(void)
 {
@@ -32,21 +33,46 @@ int main(void)
     }
     int *i_array;
     float *f_array;
+
+    // // Övning 1
+    // switch (toupper(type))
+    // {
+    // case 'I':
+    //     i_array = (int *)createMallocArray(i_array, n);
+    //     for (size_t i = 0; i < n; i++)
+    //     {
+    //         i_array[i] = i;
+    //         printf("i_array[%d]: %d\n", i, i_array[i]);
+    //     }
+    //     break;
+    // case 'F':
+    //     f_array = (float *)createMallocArray(f_array, n);
+    //     for (size_t i = 0; i < n; i++)
+    //     {
+    //         f_array[i] = i + 1.1;
+    //         printf("f_array[%d]: %.2f\n", i, f_array[i]);
+    //     }
+    //     break;
+    // default:
+    //     break;
+    // }
+
+    //Övning 2
     switch (toupper(type))
     {
     case 'I':
-        i_array = (int *)createMallocArray(i_array, n);
+        i_array = (int *)createCallacArray(i_array, n);
         for (size_t i = 0; i < n; i++)
         {
-            i_array[i] = i;
+            // i_array[i] = i;
             printf("i_array[%d]: %d\n", i, i_array[i]);
         }
         break;
     case 'F':
-        f_array = (float *)createMallocArray(f_array, n);
+        f_array = (float *)createCallacArray(f_array, n);
         for (size_t i = 0; i < n; i++)
         {
-            f_array[i] = i + 1.1;
+            // f_array[i] = i + 1.1;
             printf("f_array[%d]: %.2f\n", i, f_array[i]);
         }
         break;
@@ -65,6 +91,17 @@ int main(void)
 void *createMallocArray(void *p, size_t n)
 {
     void *temp = malloc(sizeof(p) * n);
+    if (temp == NULL)
+    {
+        printf("Fail to build malloc :(\n");
+        exit(1);
+    }
+    return temp;
+};
+
+void *createCallacArray(void *p, size_t n)
+{
+    void *temp = calloc(n, sizeof(p));
     if (temp == NULL)
     {
         printf("Fail to build malloc :(\n");
