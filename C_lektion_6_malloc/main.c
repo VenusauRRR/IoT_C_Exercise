@@ -4,6 +4,7 @@
 
 void *createMallocArray(void *p, size_t n);
 void *createCallacArray(void *p, size_t n);
+void *createReallocArray(void *p, size_t elem_size, size_t n, int *size_count);
 
 int main(void)
 {
@@ -44,6 +45,7 @@ int main(void)
     //         i_array[i] = i;
     //         printf("i_array[%d]: %d\n", i, i_array[i]);
     //     }
+    // free(i_array);
     //     break;
     // case 'F':
     //     f_array = (float *)createMallocArray(f_array, n);
@@ -53,29 +55,68 @@ int main(void)
     //         printf("f_array[%d]: %.2f\n", i, f_array[i]);
     //     }
     //     break;
+    // free(f_array);
     // default:
     //     break;
     // }
 
-    //Övning 2
+    // //Övning 2
+    // switch (toupper(type))
+    // {
+    // case 'I':
+    //     i_array = (int *)createCallacArray(i_array, n);
+    //     for (size_t i = 0; i < n; i++)
+    //     {
+    //         // i_array[i] = i;
+    //         printf("i_array[%d]: %d\n", i, i_array[i]);
+    //     }
+    // free(i_array);
+    //     break;
+    // case 'F':
+    //     f_array = (float *)createCallacArray(f_array, n);
+    //     for (size_t i = 0; i < n; i++)
+    //     {
+    //         // f_array[i] = i + 1.1;
+    //         printf("f_array[%d]: %.2f\n", i, f_array[i]);
+    //     }
+    // free(f_array);
+    //     break;
+    // default:
+    //     break;
+    // }
+
+    //Övning 3
+    int size_count = 0;
     switch (toupper(type))
     {
-    case 'I':
-        i_array = (int *)createCallacArray(i_array, n);
-        for (size_t i = 0; i < n; i++)
+    case 'I':{
+        i_array = NULL;
+        i_array = (int *)createReallocArray(i_array, sizeof(int), n, &size_count);
+        int i_size = sizeof(i_array)/sizeof(int);
+        for (size_t i = 0; i < size_count; i++)
         {
-            // i_array[i] = i;
+            i_array[i] = i;
             printf("i_array[%d]: %d\n", i, i_array[i]);
         }
+        free(i_array);
         break;
-    case 'F':
-        f_array = (float *)createCallacArray(f_array, n);
-        for (size_t i = 0; i < n; i++)
+    }
+        
+    case 'F':{
+        f_array = NULL;
+        f_array = (float *)createReallocArray(f_array, sizeof(float), n, &size_count);
+        printf("hello");
+        int f_size = sizeof(f_array)/sizeof(float);
+        // printf("new f_size %zu\n", f_size);
+        for (size_t i = 0; i < size_count; i++)
         {
-            // f_array[i] = i + 1.1;
+            f_array[i] = i + 1.1;
             printf("f_array[%d]: %.2f\n", i, f_array[i]);
         }
+        free(f_array);
         break;
+    }
+        
     default:
         break;
     }
@@ -104,7 +145,21 @@ void *createCallacArray(void *p, size_t n)
     void *temp = calloc(n, sizeof(p));
     if (temp == NULL)
     {
-        printf("Fail to build malloc :(\n");
+        printf("Fail to build calloc :(\n");
+        exit(1);
+    }
+    return temp;
+};
+
+void *createReallocArray(void *p, size_t elem_size, size_t n, int *size_count)
+{
+    size_t new_size = n < 10 ? (n + 1) : (size_t) (n * 1.1);
+    *size_count = new_size;
+    printf("new size %zu\n", new_size);
+    void *temp = realloc(p, elem_size*new_size);
+    if (temp == NULL)
+    {
+        printf("Fail to build realloc :(\n");
         exit(1);
     }
     return temp;
