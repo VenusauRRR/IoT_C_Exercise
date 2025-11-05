@@ -46,7 +46,7 @@ int main(void)
         f_array = (float *)createMallocArray(f_array, n);
         for (size_t i = 0; i < n; i++)
         {
-            f_array[i] = i;
+            f_array[i] = i + 1.1;
             printf("f_array[%d]: %.2f\n", i, f_array[i]);
         }
         break;
