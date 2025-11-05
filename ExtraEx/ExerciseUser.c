@@ -1,3 +1,27 @@
+// [USERS!!!!!!!!!]
+
+// - Skapa en strängliteral anonymous_name "Jon Doe"
+// - Skapa en int age som är lika med 0
+// - Skapa en strängliteral anonymous_email "jon.doe@anonymous.com"
+// - skapa en struct user som ska ha variablerna int age, char name[30], char email[50]. 
+// - Skapa en array med 10 user:s där vi fyller arrayen med 10 user:s som har ovanstående standardvärden
+// - Skapa också en int number_of_users med startvärde 0
+
+// - Vi ska ha en meny där vi ska ha möjlighet att skapa en user och lägga till den i vår array (om det finns plats vill säga!) Kontrollera följande:
+// # Att det fanns minst ett mellanslag när användaren skrev in namnet
+// # Att det fanns ett @ med i email-adressen
+// # Att åldern är mellan 0 och 130
+
+// - Vi ska också kunna välja att skriva ut alla users (även våra anonyma nissar!)
+// - Vi ska också kunna välja att ändra information om en user givet att vi anger korrekt email
+
+// [BONUS]
+// - Vi vill också kunna ta bort en user baserat på om vi anger korrekt namn (tänk på vad som ska hända med arrayen beroende på vart vi behöver ta bort en user!)
+// - Utöka en user så att den har en personlig hälsningsfras i sin struct samt ett lösenord
+// - Möjliggör så att en användare kan logga in givet att de anger korrekt email + lösenord
+// - Det ska finnas ett trevligt välkommstmeddelande till varje enskild user där derans namn nämns i meddelandet! Tex "Welcome dear <user_name>, lovely to see you again!"
+// - När vi loggar in så ska vi kunna välja att skriva ut vår hälsningsfras eller logga ut.
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>

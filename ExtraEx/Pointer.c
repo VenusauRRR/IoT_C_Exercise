@@ -192,6 +192,11 @@ int main(void)
     printf("Average value: %.2f\n", (float)total/count);
     free(p);
 
+    //Ex 15  
+//     Implementera strcpy-light 
+//     char* my_strcpy(char *dst, const char *src) kopierar inklusive ’\0’. Testa med korta strängar.
+
+
     return 0;
 }
 
