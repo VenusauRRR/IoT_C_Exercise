@@ -7,6 +7,7 @@ void ex09_my_memset(void *dst, int value, size_t n);
 int *ex10_max_ptr(int *begin, size_t n);
 void my_strcpy(char *dst, const char *src);
 char *my_strcpy2(char *dst, const char *src, size_t dst_size);
+size_t my_strlen(const char *s);
 
 typedef struct
 {
@@ -216,7 +217,8 @@ int main(void)
 
     //Ex 16
     // Implementera strlen-light size_t my_strlen(const char *s) utan arrayer, endast pekare.
-
+    char *s1 = "Hello World";
+    printf("string length = %zu\n", my_strlen(s1));
 
     return 0;
 }
@@ -261,3 +263,12 @@ int *ex10_max_ptr(int *begin, size_t n)
     dst[dst_size-1] = '\0';
     return dst;
  }
+
+size_t my_strlen(const char *s){
+    int count = 0;
+    while (*(s+count) != '\0')
+    {
+        count++;
+    }
+    return count;
+}
