@@ -6,6 +6,7 @@ int ex07_sumArrayWithPointer(int *p);
 void ex09_my_memset(void *dst, int value, size_t n);
 int *ex10_max_ptr(int *begin, size_t n);
 void my_strcpy(char *dst, const char *src);
+char *my_strcpy2(char *dst, const char *src, size_t dst_size);
 
 typedef struct
 {
@@ -209,8 +210,12 @@ int main(void)
 //     printf("s4 before copy = %s\n", s4);
 //     my_strcpy(s4,s3);
 //     printf("s4 after copy = %s\n", s4);
+//     char *s5 = "Today is good weather";
+//     char *s6 = my_strcpy2(s6, s5, 20 * sizeof(s5)); // NOT OK!!! <--- s6 not initialized, will cause undefined behavior &
+//                                                     // sizeof(s5) is size of a pointer (8 bytes), not size of the string length
 
-
+    //Ex 16
+    // Implementera strlen-light size_t my_strlen(const char *s) utan arrayer, endast pekare.
 
 
     return 0;
@@ -249,4 +254,10 @@ int *ex10_max_ptr(int *begin, size_t n)
 
  void my_strcpy(char *dst, const char *src){
     strncpy(dst, src, 20 * sizeof(char));
+ }
+
+ char *my_strcpy2(char *dst, const char *src, size_t dst_size){
+    strncpy(dst, src, dst_size);
+    dst[dst_size-1] = '\0';
+    return dst;
  }
