@@ -1,9 +1,11 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 
 int ex07_sumArrayWithPointer(int *p);
 void ex09_my_memset(void *dst, int value, size_t n);
 int *ex10_max_ptr(int *begin, size_t n);
+void my_strcpy(char *dst, const char *src);
 
 typedef struct
 {
@@ -148,53 +150,67 @@ int main(void)
     // }
     // free(a);
 
-    // Ex 14
-    // realloc för växande buffert
-    //  Läs heltal tills EOF, väx kapaciteten med realloc (dubblera). Skriv ut antal och medelvärde
-    int *p = NULL;
-    int *temp = realloc(p, sizeof(*p) * 5);
-    if (temp == NULL)   //***IMPORTANT*** need to check if realloc is built successfully
-    {
-        printf("Building realloc failed\n");
-        // free(p); //free the original pointer if wants to exit the program, otherwise keep it avoiding losing data
-        exit(1);
-    }
-    p = temp;
-    int count = 0;
-    int capacity = 5;
-    printf("Enter as many numbers as you want (Ctrl+D to end):\n");
-    while (scanf("%d", &p[count]) == 1)     //check if scanf() is reaching the end, 1 means valid integer is read
-    {
-        printf("You entered: %d\n", p[count]);
-        count++;
-        if (count == capacity)
-        {
-            capacity *= 2;
-            printf("capacity: %d\n", capacity);
-            temp = realloc(p, sizeof(*p) * capacity);
-            if (temp == NULL)
-            {
-                printf("Building realloc failed\n");
-                // free(p); //free the original pointer if wants to exit the program, otherwise keep it avoiding losing data
-                exit(1);
-            }
-            p = temp;
-        }
-    }
-    printf("You have entered Ctrl+D\n");
-    int total = 0;
-    for (int i = 0; i < count; i++)
-    {
-        printf("index %d: %d\n", i, p[i]);
-        total += p[i];
-    }
-    printf("Total: %d\n", total);
-    printf("Average value: %.2f\n", (float)total/count);
-    free(p);
+    // // Ex 14
+    // // realloc för växande buffert
+    // //  Läs heltal tills EOF, väx kapaciteten med realloc (dubblera). Skriv ut antal och medelvärde
+    // int *p = NULL;
+    // int *temp = realloc(p, sizeof(*p) * 5);
+    // if (temp == NULL)   //***IMPORTANT*** need to check if realloc is built successfully
+    // {
+    //     printf("Building realloc failed\n");
+    //     // free(p); //free the original pointer if wants to exit the program, otherwise keep it avoiding losing data
+    //     exit(1);
+    // }
+    // p = temp;
+    // int count = 0;
+    // int capacity = 5;
+    // printf("Enter as many numbers as you want (Ctrl+D to end):\n");
+    // while (scanf("%d", &p[count]) == 1)     //check if scanf() is reaching the end, 1 means valid integer is read
+    // {
+    //     printf("You entered: %d\n", p[count]);
+    //     count++;
+    //     if (count == capacity)
+    //     {
+    //         capacity *= 2;
+    //         printf("capacity: %d\n", capacity);
+    //         temp = realloc(p, sizeof(*p) * capacity);
+    //         if (temp == NULL)
+    //         {
+    //             printf("Building realloc failed\n");
+    //             // free(p); //free the original pointer if wants to exit the program, otherwise keep it avoiding losing data
+    //             exit(1);
+    //         }
+    //         p = temp;
+    //     }
+    // }
+    // printf("You have entered Ctrl+D\n");
+    // int total = 0;
+    // for (int i = 0; i < count; i++)
+    // {
+    //     printf("index %d: %d\n", i, p[i]);
+    //     total += p[i];
+    // }
+    // printf("Total: %d\n", total);
+    // printf("Average value: %.2f\n", (float)total/count);
+    // free(p);
 
-    //Ex 15  
-//     Implementera strcpy-light 
-//     char* my_strcpy(char *dst, const char *src) kopierar inklusive ’\0’. Testa med korta strängar.
+//     //Ex 15  
+// //     Implementera strcpy-light 
+// //     char* my_strcpy(char *dst, const char *src) kopierar inklusive ’\0’. Testa med korta strängar.
+//     char s1[20] = "Hello";
+//     char s2[20] = "";
+//     printf("s1 = %s\n", s1);
+//     printf("s2 before copy = %s\n", s2);
+//     my_strcpy(s2, s1);
+//     printf("s2 after copy = %s\n", s2);
+//     char *s3 = "New String";
+//     char *s4 = "";  // NOT OK!!! <--- string literal: read-only memory. char *s4 = mallac(20 * sizeof(char)) or char s4[20] = "" instead;
+//     printf("s3 = %s\n", s3);
+//     printf("s4 before copy = %s\n", s4);
+//     my_strcpy(s4,s3);
+//     printf("s4 after copy = %s\n", s4);
+
+
 
 
     return 0;
@@ -230,3 +246,7 @@ int *ex10_max_ptr(int *begin, size_t n)
     }
     return max;
 }
+
+ void my_strcpy(char *dst, const char *src){
+    strncpy(dst, src, 20 * sizeof(char));
+ }
