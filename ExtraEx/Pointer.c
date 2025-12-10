@@ -2,18 +2,22 @@
 #include <stdlib.h>
 #include <string.h>
 
-int ex07_sumArrayWithPointer(int *p);
-void ex09_my_memset(void *dst, int value, size_t n);
-int *ex10_max_ptr(int *begin, size_t n);
-void my_strcpy(char *dst, const char *src);
-char *my_strcpy2(char *dst, const char *src, size_t dst_size);
-size_t my_strlen(const char *s);
-
 typedef struct
 {
     int x;
     int y;
 } Point;
+
+typedef struct { char *name; int age; } Person;
+
+int ex07_sumArrayWithPointer(int *p);
+void ex09_my_memset(void *dst, int value, size_t n);
+int *ex10_max_ptr(int *begin, size_t n);
+void ex15_my_strcpy(char *dst, const char *src);
+char *ex15_my_strcpy2(char *dst, const char *src, size_t dst_size);
+size_t ex16_my_strlen(const char *s);
+Person ex18_clone(const Person *p);
+void ex18_person_free(Person*);
 
 int main(void)
 {
@@ -198,27 +202,38 @@ int main(void)
 
 //     //Ex 15  
 // //     Implementera strcpy-light 
-// //     char* my_strcpy(char *dst, const char *src) kopierar inklusive ’\0’. Testa med korta strängar.
+// //     char* ex15_my_strcpy(char *dst, const char *src) kopierar inklusive ’\0’. Testa med korta strängar.
 //     char s1[20] = "Hello";
 //     char s2[20] = "";
 //     printf("s1 = %s\n", s1);
 //     printf("s2 before copy = %s\n", s2);
-//     my_strcpy(s2, s1);
+//     ex15_my_strcpy(s2, s1);
 //     printf("s2 after copy = %s\n", s2);
 //     char *s3 = "New String";
 //     char *s4 = "";  // NOT OK!!! <--- string literal: read-only memory. char *s4 = mallac(20 * sizeof(char)) or char s4[20] = "" instead;
 //     printf("s3 = %s\n", s3);
 //     printf("s4 before copy = %s\n", s4);
-//     my_strcpy(s4,s3);
+//     ex15_my_strcpy(s4,s3);
 //     printf("s4 after copy = %s\n", s4);
 //     char *s5 = "Today is good weather";
-//     char *s6 = my_strcpy2(s6, s5, 20 * sizeof(s5)); // NOT OK!!! <--- s6 not initialized, will cause undefined behavior &
+//     char *s6 = ex15_my_strcpy2(s6, s5, 20 * sizeof(s5)); // NOT OK!!! <--- s6 not initialized, will cause undefined behavior &
 //                                                     // sizeof(s5) is size of a pointer (8 bytes), not size of the string length
 
-    //Ex 16
-    // Implementera strlen-light size_t my_strlen(const char *s) utan arrayer, endast pekare.
-    char *s1 = "Hello World";
-    printf("string length = %zu\n", my_strlen(s1));
+    // //Ex 16
+    // // Implementera strlen-light size_t ex16_my_strlen(const char *s) utan arrayer, endast pekare.
+    // char *s1 = "Hello World";
+    // printf("string length = %zu\n", ex16_my_strlen(s1));
+
+    //Ex 17
+    // Säker inläsning till buffert 
+    //Läs en rad med fgets(buf, sizeof buf, stdin) och ta bort ’\n’ via pekare.
+
+    //Ex 18
+//  Skriv Person 
+//  ex18_clone(const Person *p) som allokerar och kopierar name. Skriv även void person_free(Person*).
+    Person p1 = {"Peter", 27};
+    ex18_clone(&p1);
+
 
     return 0;
 }
@@ -254,21 +269,33 @@ int *ex10_max_ptr(int *begin, size_t n)
     return max;
 }
 
- void my_strcpy(char *dst, const char *src){
+ void ex15_my_strcpy(char *dst, const char *src){
     strncpy(dst, src, 20 * sizeof(char));
  }
 
- char *my_strcpy2(char *dst, const char *src, size_t dst_size){
+ char *ex15_my_strcpy2(char *dst, const char *src, size_t dst_size){
     strncpy(dst, src, dst_size);
     dst[dst_size-1] = '\0';
     return dst;
  }
 
-size_t my_strlen(const char *s){
+size_t ex16_my_strlen(const char *s){
     int count = 0;
     while (*(s+count) != '\0')
     {
         count++;
     }
     return count;
+}
+
+Person ex18_clone(const Person *p){
+    Person temp = {};
+    temp.name = p->name;
+    temp.age = p->age;
+    printf("name %s age %d\n", temp.name, temp.age);
+    return temp;
+}
+
+void ex18_person_free(Person *p){
+    
 }

@@ -1,0 +1,9 @@
+{
+    "makefile.launchConfigurations": [
+        {
+            "cwd": "c:\\Users\\venus\\_Dev\\C_Ex\\BitEx",
+            "binaryPath": "c:\\Users\\venus\\_Dev\\C_Ex\\BitEx\\bit.exe",
+            "binaryArgs": []
+        }
+    ]
+}
